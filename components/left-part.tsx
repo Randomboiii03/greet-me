@@ -16,7 +16,7 @@ const LeftComponent: React.FC<LeftComponentProps> = ({ audio, number, word, mess
   return (
     <div className="h-1/4 xl:h-full w-full xl:w-1/4 relative">
 
-      <CenterRulerComponent/>
+      {/* <CenterRulerComponent/> */}
 
       <CalendarComponent number={ number } word={ word }/>
 

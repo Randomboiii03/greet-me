@@ -12,7 +12,7 @@ export default function Page() {
     // style={{ backgroundImage: `url('/images/bg-grayscale.png')` }}
     >
       
-      <CenterRulerComponent/>
+      {/* <CenterRulerComponent/> */}
 
       <LeftComponent audio="/images/WAV Button.png" number={25} word="DAYS" message="I LOVE YOU" />
       
