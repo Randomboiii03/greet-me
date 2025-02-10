@@ -10,7 +10,11 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 
-export function CarouselPlugin() {
+interface CarouselPluginProps {
+  images: string[];
+}
+
+export function CarouselPlugin({ images }: CarouselPluginProps) {
   const plugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: false })
   )
@@ -21,12 +25,12 @@ export function CarouselPlugin() {
         src="/images/Frame.png"
         alt="Frame"
         className="absolute h-auto transform -rotate-[23deg] z-10 
-        -top-6 -left-[0.5]
+        -top-[15.7%] left-[0.5%]
         md:-top-9 md:left-1
         xl:-top-11 xl:left-1"
       />
 
-      <div className="w-[69%] h-auto bg-blue-500 rounded-3xl">
+      <div className="w-[69%] h-auto bg-black rounded-3xl">
         <Carousel
           opts={{loop: true}}
           plugins={[plugin.current]}
@@ -35,12 +39,16 @@ export function CarouselPlugin() {
           onMouseLeave={plugin.current.reset}
         >
           <CarouselContent className="">
-            {Array.from({ length: 5 }).map((_, index) => (
+            {images.map((imageSrc, index) => (
               <CarouselItem key={index}>
                 <div className="p-1">
                   <Card>
                     <CardContent className="flex aspect-square items-center justify-center p-6">
-                      <span className="text-4xl font-semibold">{index + 1}</span>
+                      <img
+                        src={imageSrc}
+                        alt={`Image ${index + 1}`}
+                        className="object-cover w-full h-full"
+                      />
                     </CardContent>
                   </Card>
                 </div>

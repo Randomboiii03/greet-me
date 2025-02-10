@@ -3,14 +3,22 @@ import React from 'react';
 import CalendarComponent from './left-ui/calendar';
 import MailComponent from './left-ui/mail';
 import CenterRulerComponent from './center-ruler';
+import PlayAudioComponent from './left-ui/play-audio';
 
-const LeftComponent: React.FC = () => {
+interface LeftComponentProps {
+  audio: string;
+  number: number;
+  word: string;
+  message: string;
+}
+
+const LeftComponent: React.FC<LeftComponentProps> = ({ audio, number, word, message }) => {
   return (
     <div className="h-1/4 xl:h-full w-full xl:w-1/4 relative">
 
       <CenterRulerComponent/>
 
-      <CalendarComponent/>
+      <CalendarComponent number={ number } word={ word }/>
 
       {/* Top Left Heart */}
       <img
@@ -41,17 +49,9 @@ const LeftComponent: React.FC = () => {
         xl:top-[40%] xl:right-[-9%] xl:w-[32%]"
       />
 
-      <button
-        // onClick={onClick}
-        className="absolute bg-center bg-contain bg-no-repeat 
-        top-[69%] left-[27%] w-[45%] h-[33%] active:top-[69.5%] active:left-[27%] active:w-[45%] active:h-[32%] 
-        md:top-[34%] md:left-[27%] md:w-[45%] md:h-[33%] md:active:top-[34.5%] md:active:left-[27%] md:active:w-[45%] md:active:h-[32%] 
-        xl:top-[42%] xl:left-[23%] xl:w-[35%] xl:h-[17%] xl:active:top-[42.5%] xl:active:left-[23%] xl:active:w-[34%] xl:active:h-[16%]"
-        style={{ backgroundImage: "url('/images/WAV Button.png')" }}
-        >
-      </button>
+      <PlayAudioComponent audio={ audio }/>
 
-      <MailComponent />
+      <MailComponent message={ message }/> 
 
     </div>
   );
