@@ -6,7 +6,6 @@ import { notFound, useParams } from "next/navigation"; // useParams to handle as
 import MidComponent from "@/components/middle-part";
 import LeftComponent from "@/components/left-part";
 import RightComponent from "@/components/right-part";
-import CenterRulerComponent from "@/components/center-ruler";
 
 async function fetchGreetData(uuid: string) {
   // Fetch data from the API

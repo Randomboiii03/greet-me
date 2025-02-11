@@ -2,7 +2,6 @@ import React from 'react';
 
 import CalendarComponent from './left-ui/calendar';
 import MailComponent from './left-ui/mail';
-import CenterRulerComponent from './center-ruler';
 import PlayAudioComponent from './left-ui/play-audio';
 
 interface LeftComponentProps {
