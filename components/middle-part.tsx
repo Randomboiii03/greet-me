@@ -1,8 +1,10 @@
+/* eslint-disable @next/next/no-img-element */
+
 import React from 'react';
 
 import MainHeartComponent from "./mid-ui/main-heart";
 import PlayButtonComponent from "./mid-ui/play-button";
-import RandomHeartsComponent from "./mid-ui/random-heart/random-hearts";
+import RandomHeartsComponent from "./mid-ui/random-hearts";
 
 interface PlayButtonComponentProps {
   videoUrl?: string; // Optional video URL parameter

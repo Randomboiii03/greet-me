@@ -66,8 +66,12 @@ export default function Page() {
     return <div className="h-screen max-h-screen overflow-hidden flex flex-col xl:flex-row bg-contain bg-center bg-no-repeat bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-pink-400 via-red-300 to-white" ></div>
   }
 
-  console.log(data);
   const { id, count, label, message, music, video, images } = data;
+
+  console.log(id);
+
+  const imageArray = images ? images.split("|") : [];
+  console.log(imageArray)
 
   return (
     <div 
