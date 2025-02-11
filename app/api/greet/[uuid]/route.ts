@@ -1,7 +1,5 @@
 import { NextResponse } from 'next/server';
 import { google } from 'googleapis';
-import { readFileSync } from 'fs';
-import path from 'path';
 
 // Function to fetch data from Google Sheets by UUID
 async function getData(uuid: string) {
