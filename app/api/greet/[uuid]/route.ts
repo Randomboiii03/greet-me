@@ -47,9 +47,8 @@ async function getData(uuid: string) {
   return { id, count, label, message, music, video, images };
 }
 
-// API handler to handle the request
-export async function GET(request: Request, { params }: { params: { uuid: string } }) {
-  const { uuid } = params;
+export async function GET(request: Request) {
+  const uuid = request.nextUrl.pathname.split('/').pop(); // Extract the uuid from the URL
 
   if (!uuid) {
     return NextResponse.json({ error: 'Invalid UUID' }, { status: 400 });
