@@ -10,7 +10,7 @@ import RightComponent from "@/components/right-part";
 async function fetchGreetData(uuid: string) {
   // Fetch data from the API
   const res = await fetch(`/api/greet/${uuid}`, {
-    cache: 'no-store', // Prevents caching
+    cache: "no-store", // Prevents caching
   });
 
   if (!res.ok) {
@@ -23,11 +23,20 @@ async function fetchGreetData(uuid: string) {
 
 export default function Page() {
   const params = useParams(); // Fetch params using `useParams`
-  
-  const { uuid } = params ?? {}; // Safely destructure uuid from params
+
+  // Safely convert `uuid` to string if it's an array
+  const uuid = Array.isArray(params?.uuid) ? params?.uuid[0] : params?.uuid;
 
   // Define state for storing the fetched data
-  const [data, setData] = useState<{ id: string; count: number; label: string; message: string; music: string; video: string; images: string} | null>(null);
+  const [data, setData] = useState<{
+    id: string;
+    count: number;
+    label: string;
+    message: string;
+    music: string;
+    video: string;
+    images: string;
+  } | null>(null);
   const [error, setError] = useState<boolean>(false);
 
   // Fetch data once using useEffect
@@ -63,24 +72,22 @@ export default function Page() {
 
   if (!data) {
     // You can add a loading state here if desired
-    return <div className="h-screen max-h-screen overflow-hidden flex flex-col xl:flex-row bg-contain bg-center bg-no-repeat bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-pink-400 via-red-300 to-white" ></div>
+    return (
+      <div className="h-screen max-h-screen overflow-hidden flex flex-col xl:flex-row bg-contain bg-center bg-no-repeat bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-pink-400 via-red-300 to-white"></div>
+    );
   }
 
   const { id, count, label, message, music, video, images } = data;
 
-  console.log(id);
-
   const imageArray = images ? images.split("|") : [];
-  console.log(imageArray)
 
   return (
-    <div 
-      className="h-screen max-h-screen overflow-hidden flex flex-col xl:flex-row bg-contain bg-center bg-no-repeat bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-pink-400 via-red-300 to-white" 
+    <div
+      className="h-screen max-h-screen overflow-hidden flex flex-col xl:flex-row bg-contain bg-center bg-no-repeat bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-pink-400 via-red-300 to-white"
     >
-      {/* <CenterRulerComponent/> */}
-      <LeftComponent audio={ music } number={ count } word={ label } message={ message } />
-      <MidComponent videoUrl={ video } />
-      <RightComponent images={['/images/Heart I.png', '/images/Heart II.png']} />
+      <LeftComponent audio={music} number={count} word={label} message={message} />
+      <MidComponent videoUrl={video} />
+      <RightComponent images={imageArray} />
     </div>
   );
 }
