@@ -54,12 +54,6 @@ export default function Page() {
         return;
       }
 
-      // If the title is 'CLOSED', trigger a 404
-      if (result.title === "CLOSED") {
-        setError(true);
-        return;
-      }
-
       setData(result);
     }
 
@@ -80,6 +74,7 @@ export default function Page() {
   const { id, count, label, message, music, video, images } = data;
 
   console.log(id);
+  console.log(images)
   const imageArray = images ? images.split("|") : [];
 
   return (
@@ -88,7 +83,7 @@ export default function Page() {
     >
       <LeftComponent audio={music} number={count} word={label} message={message} />
       <MidComponent videoUrl={video} />
-      <RightComponent images={imageArray} />
+      <RightComponent images={imageArray}  /> 
     </div>
   );
 }
