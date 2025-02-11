@@ -79,6 +79,7 @@ export default function Page() {
 
   const { id, count, label, message, music, video, images } = data;
 
+  console.log(id);
   const imageArray = images ? images.split("|") : [];
 
   return (
